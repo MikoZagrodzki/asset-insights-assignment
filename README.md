@@ -33,7 +33,7 @@ Ensure you have the following installed on your machine:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-repo-url.git
+   git clone https://github.com/MikoZagrodzki/asset-insights-assignment
    cd your-repo
 Install dependencies:
 
