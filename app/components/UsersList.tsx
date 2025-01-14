@@ -41,11 +41,11 @@ function UsersList() {
 
   // Automaticaly scrolls to the last list's element
   const listEndRef = useRef<HTMLLIElement | null>(null);
-  // useEffect(() => {
-  //   if (listEndRef.current) {
-  //     listEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  //   }
-  // }, [users]);
+  useEffect(() => {
+    if (listEndRef.current) {
+      listEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [users]);
 
   const handleAddUser = async () => {
     if (!inputValue) {
@@ -55,6 +55,12 @@ function UsersList() {
     // Check if name is not spaces only
     if (!inputValue.trim()) {
       alert('Please enter a valid user name');
+      return;
+    }
+    // Check if name contains only valid characters
+    const validNameRegex = /^[a-zA-Z0-9 ]+$/;
+    if (!validNameRegex.test(inputValue)) {
+      alert('Please enter a name without special characters');
       return;
     }
 

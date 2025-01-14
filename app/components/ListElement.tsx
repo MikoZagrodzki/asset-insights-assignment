@@ -46,8 +46,20 @@ function ListElement({ user, setUsers, users }: ListElementProps) {
       handleCancelEdit();
       return;
     }
+    // If Name hasn't change cancel edit
     if (newName === user.name) {
       handleCancelEdit();
+      return;
+    }
+    // Check if name is not spaces only
+    if (!newName.trim()) {
+      alert('Please enter a valid user name');
+      return;
+    }
+    // Check if name contains only valid characters
+    const validNameRegex = /^[a-zA-Z0-9 ]+$/;
+    if (!validNameRegex.test(newName)) {
+      alert('Please enter a name without special characters');
       return;
     }
     try {
